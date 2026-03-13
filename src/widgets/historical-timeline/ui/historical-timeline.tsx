@@ -1,11 +1,11 @@
-import { TimelineCircle, TinelineNavigation } from "@entities/timeline-period";
+import { TimelineCircle, TimelineNavigation } from "@entities/timeline-period";
 import { useTimelinePeriods } from "@features/timeline-period";
-import { TimeineSwiperPagination, TimelineSwiper } from "@features/timeline-swiper";
+import { TimelineSwiper, TimelineSwiperPagination } from "@features/timeline-swiper";
 import { useAnimatedNumber } from "@shared/lib/useAnimatedNumber";
 import { Flex } from "@shared/ui/flex";
 import { Line } from "@shared/ui/line";
 import { T } from "@shared/ui/typography";
-import { type FC, useId } from "react";
+import { type FC, useEffect, useId } from "react";
 import { useHistoricalTimelineWidget } from "../model/useHistoricalTimelineWidget";
 import { Divider, StyledMainContainer } from "./historical-timeline.styles";
 
@@ -24,11 +24,34 @@ export const HistoricalTimeline: FC = () => {
 
 	const animatedStartYear = useAnimatedNumber(activePeriod?.startYear ?? 0);
 	const animatedEndYear = useAnimatedNumber(activePeriod?.endYear ?? 0);
-
 	const paginationId = useId().replace(/:/g, "");
 
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (isLoading) return;
+			if (event.key === "ArrowLeft") {
+				event.preventDefault();
+				handlePrevTimeline();
+			}
+			if (event.key === "ArrowRight") {
+				event.preventDefault();
+				handleNextTimeline();
+			}
+		};
+		window.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown);
+		};
+	}, [isLoading, handleNextTimeline, handlePrevTimeline]);
+
 	return (
-		<StyledMainContainer direction="column" position="relative">
+		<StyledMainContainer
+			direction="column"
+			position="relative"
+			tabIndex={0}
+			aria-label="Историческая шкала времени"
+		>
 			<Line direction="vertical" attach="left" />
 			<Line direction="vertical" attach="right" />
 			<Line direction="vertical" attach="center" />
@@ -52,7 +75,8 @@ export const HistoricalTimeline: FC = () => {
 					{animatedEndYear}
 				</T>
 			</Flex>
-			<TinelineNavigation
+
+			<TimelineNavigation
 				isLoading={isLoading}
 				paginationCurrentLabel={paginationCurrentLabel}
 				paginationLabelAll={paginationLabelAll}
@@ -64,10 +88,10 @@ export const HistoricalTimeline: FC = () => {
 
 			<TimelineSwiper
 				paginationId={paginationId}
-				events={activePeriod?.events}
+				events={activePeriod?.events ?? []}
 				isLoading={isLoading}
 			/>
-			<TimeineSwiperPagination id={`swiper-pagination-${paginationId}`} />
+			<TimelineSwiperPagination id={`swiper-pagination-${paginationId}`} />
 		</StyledMainContainer>
 	);
 };
