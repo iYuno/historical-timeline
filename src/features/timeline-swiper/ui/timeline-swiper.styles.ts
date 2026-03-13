@@ -116,7 +116,9 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
 	opacity: 1;
 	transition: opacity 400ms ease;
 
-	&.swiper-slide-next {
-		opacity: 0.4;
+	@media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+		&.swiper-slide-next {
+			opacity: 0.4;
+		}
 	}
 `;
