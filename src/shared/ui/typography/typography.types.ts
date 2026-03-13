@@ -1,5 +1,5 @@
 import type { TypographyFontColorToken, TypographyVariant } from "@shared/config/@x/typography";
-import type { ElementType, ReactNode, RefObject } from "react";
+import type { ElementType, ReactNode, Ref } from "react";
 
 export type TypographyProps = {
 	as?: ElementType;
@@ -7,5 +7,5 @@ export type TypographyProps = {
 	color?: TypographyFontColorToken;
 	children: ReactNode;
 	className?: string;
-	ref?: RefObject<any>;
+	ref?: Ref<HTMLElement>;
 };

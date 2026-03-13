@@ -11,7 +11,7 @@ export const TimelineCircle: FC<CircleProps> = ({ points, activeIndex, onChange 
 	const prevIndexRef = useRef(activeIndex);
 
 	useEffect(() => {
-		if (activeIndex === prevIndexRef.current) return;
+		if (activeIndex === prevIndexRef.current || points.length === 0) return;
 
 		const step = 360 / points.length;
 		const shortestDelta = getShortestStepDelta(prevIndexRef.current, activeIndex, points.length);
@@ -32,6 +32,8 @@ export const TimelineCircle: FC<CircleProps> = ({ points, activeIndex, onChange 
 							variant="dot"
 							className={isActive ? "active" : undefined}
 							onClick={() => onChange(index)}
+							aria-label={`Период ${index + 1}: ${point.label}`}
+							aria-pressed={isActive}
 						>
 							<T as="p" variant="body">
 								{index + 1}

@@ -13,7 +13,7 @@ import {
 	SwiperAnimatedContainer,
 } from "./timeline-swiper.styles";
 
-const SWIPER_BREACKPOINTS = {
+const SWIPER_BREAKPOINTS = {
 	320: {
 		slidesPerView: 1,
 		spaceBetween: 25,
@@ -56,11 +56,21 @@ export const TimelineSwiper: FC<{
 	return (
 		<StyledFlexContainer position="relative">
 			<StyledFlexNavigation position="absolute">
-				<Button size="icon-sm" className="swiper-prev" variant="ghost">
-					<ChevronLeft />
+				<Button
+					size="icon-sm"
+					className="swiper-prev"
+					variant="ghost"
+					aria-label="Предыдущие события"
+				>
+					<ChevronLeft aria-hidden="true" />
 				</Button>
-				<Button size="icon-sm" className="swiper-next" variant="ghost">
-					<ChevronRight />
+				<Button
+					size="icon-sm"
+					className="swiper-next"
+					variant="ghost"
+					aria-label="Следующие события"
+				>
+					<ChevronRight aria-hidden="true" />
 				</Button>
 			</StyledFlexNavigation>
 
@@ -78,15 +88,15 @@ export const TimelineSwiper: FC<{
 						prevEl: ".swiper-prev",
 						nextEl: ".swiper-next",
 					}}
-					breakpoints={SWIPER_BREACKPOINTS}
+					breakpoints={SWIPER_BREAKPOINTS}
 					centeredSlides={false}
 					centerInsufficientSlides={false}
 					watchOverflow
 				>
-					{renderedEvents?.map((it) => {
+					{renderedEvents.map((eventItem) => {
 						return (
-							<StyledSwiperSlide key={it.id}>
-								<TimelineEventCard event={it} />
+							<StyledSwiperSlide key={eventItem.id}>
+								<TimelineEventCard event={eventItem} />
 							</StyledSwiperSlide>
 						);
 					})}

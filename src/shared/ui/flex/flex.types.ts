@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 
 export type FlexDirection = "row" | "column";
 
@@ -7,10 +7,10 @@ export type FlexJustify = CSSProperties["justifyContent"];
 export type FlexWrap = CSSProperties["flexWrap"];
 export type FlexGap = CSSProperties["gap"];
 export type MarginTop = CSSProperties["marginTop"];
-export type MarginBttom = CSSProperties["marginBottom"];
+export type MarginBottom = CSSProperties["marginBottom"];
 export type Position = CSSProperties["position"];
 
-export type FlexProps = {
+export type FlexProps = HTMLAttributes<HTMLDivElement> & {
 	children: ReactNode;
 	className?: string;
 	direction?: FlexDirection;
@@ -20,5 +20,5 @@ export type FlexProps = {
 	wrap?: FlexWrap;
 	position?: Position;
 	marginTop?: MarginTop;
-	marginBottom?: MarginBttom;
+	marginBottom?: MarginBottom;
 };

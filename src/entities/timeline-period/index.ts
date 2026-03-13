@@ -6,4 +6,4 @@ export type {
 	TimelinePeriod,
 } from "./model/types";
 export { TimelineCircle } from "./ui/timeline-circle/timeline-circle";
-export { TinelineNavigation } from "./ui/timeline-navigation/timeline-navigation";
+export { TimelineNavigation } from "./ui/timeline-navigation/timeline-navigation";

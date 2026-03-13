@@ -36,7 +36,7 @@ export const SwiperAnimatedContainer = styled.div`
 		.swiper {
 			width: 300px;
 			margin: 0;
-		}	
+		}
 	}
 
 	@media (min-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -48,7 +48,7 @@ export const SwiperAnimatedContainer = styled.div`
 
 	@media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
 		.swiper {
-			width: calc(1440 / 1920 * 100vw);;
+			width: calc(1440 / 1920 * 100vw);
 			margin: 0;
 		}
 	}
@@ -61,7 +61,7 @@ export const SwiperAnimatedContainer = styled.div`
 	}
 `;
 
-export const TimeineSwiperPagination = styled.div`
+export const TimelineSwiperPagination = styled.div`
 	z-index: ${ZIndexKind.header};
 	display: flex;
 	justify-content: center;
@@ -72,8 +72,9 @@ export const TimeineSwiperPagination = styled.div`
 			width: 6px;
 			height: 6px;
 		}
+
 		&&& {
-			bottom: calc(0px + 1.25rem - 3px + 12.5px);
+			bottom: calc(1.25rem + 9.5px);
 		}
 	}
 
@@ -82,8 +83,9 @@ export const TimeineSwiperPagination = styled.div`
 			width: 8px;
 			height: 8px;
 		}
+
 		&&& {
-			bottom: calc(0px + 1.25rem - 4px + 25px);
+			bottom: calc(1.25rem + 21px);
 		}
 	}
 
@@ -92,8 +94,9 @@ export const TimeineSwiperPagination = styled.div`
 			width: 10px;
 			height: 10px;
 		}
+
 		&&& {
-			bottom: calc(0px + 1.25rem - 5px + 25px);
+			bottom: calc(1.25rem + 20px);
 		}
 	}
 

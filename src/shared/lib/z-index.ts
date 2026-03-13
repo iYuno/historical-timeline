@@ -1,4 +1,4 @@
-/** biome-ignore-all lint/style/useLiteralEnumMembers: <explanation> */
+// biome-ignore-all lint/style/useLiteralEnumMembers: enum values are derived from shared layering helpers.
 const BASE_INDEX = 100;
 
 function getZIndex(level: number) {

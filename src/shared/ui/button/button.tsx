@@ -14,7 +14,7 @@ export const Button = ({ variant = "outline", size, children, ...props }: Button
 		variant === "dot" && (typeof children === "string" || typeof children === "number");
 
 	return (
-		<ButtonRoot $variant={variant} $size={size} {...props}>
+		<ButtonRoot $variant={variant} $size={size} type={props.type ?? "button"} {...props}>
 			{shouldWrap ? <span>{children}</span> : children}
 		</ButtonRoot>
 	);

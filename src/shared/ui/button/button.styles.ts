@@ -47,7 +47,7 @@ const variantStyles = {
 		color: ${({ theme }) => theme.colors.textPrimary};
 
 		&:disabled {
-			opacity: .5;
+			opacity: 0.5;
 			cursor: default;
 		}
 
@@ -67,9 +67,6 @@ const variantStyles = {
 			cursor: default;
 		}
 
-		&:not(:disabled):hover {
-		}
-		
 		box-shadow: ${({ theme }) => theme.shadow.soft};
 	`,
 
@@ -82,14 +79,10 @@ const variantStyles = {
 
 		width: 56px;
 		height: 56px;
-
 		border-radius: 50%;
 		border: 1px solid ${({ theme }) => theme.colors.borderPrimary};
-
 		background: ${({ theme }) => theme.colors.primary};
-
 		transform: scale(0.1071);
-
 		transition:
 			transform 300ms ease,
 			background 300ms ease,
@@ -102,9 +95,9 @@ const variantStyles = {
 		}
 
 		&:hover,
-		&.active {
+		&.active,
+		&[aria-pressed="true"] {
 			transform: scale(1);
-
 			background: ${({ theme }) => theme.colors.background};
 			border-color: ${({ theme }) => theme.colors.borderSecondary};
 
@@ -124,13 +117,10 @@ export const ButtonRoot = styled.button<{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	border-radius: 6px;
 	padding: 8px 12px;
-
 	font: inherit;
 
 	${({ $variant }) => variantStyles[$variant]}
-
 	${({ $size }) => $size && sizeStyles[$size]}
 `;

@@ -4,10 +4,11 @@ import styled from "styled-components";
 
 export const StyledMainContainer = styled(Flex)`
 	height: 100vh;
+	outline: none;
 
 	.timeline-navigation {
 		z-index: ${ZIndexKind.backdrop};
-	}	
+	}
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
 		.line, .timeline-circle, .divider {
@@ -24,7 +25,7 @@ export const StyledMainContainer = styled(Flex)`
 		.swiper {
 			width: 300px;
 			margin: 0;
-		}	
+		}
 
 		.years {
 			margin-top: 56px;
@@ -40,7 +41,7 @@ export const StyledMainContainer = styled(Flex)`
 		}
 
 		& > div:has(.swiper) {
-			order: 1
+			order: 1;
 		}
 	}
 
@@ -52,7 +53,7 @@ export const StyledMainContainer = styled(Flex)`
 		.swiper {
 			width: calc(${({ theme }) => theme.breakpoints.md} - 80px);
 			margin: 0;
-		}	
+		}
 
 		.years {
 			justify-content: center;
@@ -66,9 +67,9 @@ export const StyledMainContainer = styled(Flex)`
 		padding-top: calc(170 / 1080 * 100vh);
 
 		.swiper {
-			width: calc(1440 / 1920 * 100vw);;
+			width: calc(1440 / 1920 * 100vw);
 			margin: 0;
-		}	
+		}
 	}
 
 	@media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
@@ -90,16 +91,13 @@ export const StyledMainContainer = styled(Flex)`
 		.timeline-navigation {
 			order: 1;
 			margin-top: 0;
-			margin-bottom: 3.5rem	;
+			margin-bottom: 3.5rem;
 			gap: 1.25em;
 		}
 
 		& > div:has(.swiper) {
-			order: 2
+			order: 2;
 		}
-	}
-
-	@media (min-width: ${({ theme }) => theme.breakpoints["2xl"]}) {
 	}
 `;
 

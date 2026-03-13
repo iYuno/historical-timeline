@@ -12,6 +12,7 @@ export const Flex = ({
 	position = "static",
 	marginTop = "0",
 	marginBottom = "0",
+	...props
 }: FlexProps) => {
 	return (
 		<FlexRoot
@@ -24,6 +25,7 @@ export const Flex = ({
 			$marginTop={marginTop}
 			$marginBottom={marginBottom}
 			$position={position}
+			{...props}
 		>
 			{children}
 		</FlexRoot>

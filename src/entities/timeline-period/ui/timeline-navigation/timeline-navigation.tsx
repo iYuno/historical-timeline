@@ -7,7 +7,7 @@ import { useTimelineNavigation } from "../../model/useTimelineNavigation";
 import { StyledFlexContainer } from "./timeline-navigation.styles";
 import type { TimelineNavigationProps } from "./timeline-navigation.types";
 
-export const TinelineNavigation: FC<TimelineNavigationProps> = (props) => {
+export const TimelineNavigation: FC<TimelineNavigationProps> = (props) => {
 	const {
 		isLoading,
 		paginationCurrentLabel,
@@ -38,7 +38,7 @@ export const TinelineNavigation: FC<TimelineNavigationProps> = (props) => {
 					aria-label="Предыдущий период"
 					disabled={isLoading}
 				>
-					<ChevronLeft />
+					<ChevronLeft aria-hidden="true" />
 				</Button>
 
 				<Button
@@ -47,7 +47,7 @@ export const TinelineNavigation: FC<TimelineNavigationProps> = (props) => {
 					aria-label="Следующий период"
 					disabled={isLoading}
 				>
-					<ChevronRight />
+					<ChevronRight aria-hidden="true" />
 				</Button>
 			</StyledFlexContainer>
 		</Flex>
