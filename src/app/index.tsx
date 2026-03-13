@@ -1,9 +1,10 @@
+import { env } from "@shared/config";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./app";
 
 async function enableMocking() {
-	if (process.env.NODE_ENV === "development") {
+	if (env.isDevelopment && env.mockApiEnabled) {
 		const { worker } = await import("../mocks/browser");
 
 		await worker.start({

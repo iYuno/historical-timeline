@@ -1,4 +1,5 @@
 const path = require("node:path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (_, argv) => {
@@ -38,6 +39,11 @@ module.exports = (_, argv) => {
 			],
 		},
 		plugins: [
+			new webpack.DefinePlugin({
+				"process.env.NODE_ENV": JSON.stringify(isProd ? "production" : "development"),
+				"process.env.API_BASE_URL": JSON.stringify(process.env.API_BASE_URL ?? "/"),
+				"process.env.MOCK_API": JSON.stringify(process.env.MOCK_API ?? "enabled"),
+			}),
 			new HtmlWebpackPlugin({
 				template: path.resolve(__dirname, "public/index.html"),
 			}),
