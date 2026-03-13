@@ -1,6 +1,7 @@
 import { ZIndexKind } from "@shared/lib";
 import { Flex } from "@shared/ui/flex";
 import styled from "styled-components";
+import { SwiperSlide } from "swiper/react";
 
 export const StyledFlexContainer = styled(Flex)`
 	@media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
@@ -108,5 +109,14 @@ export const TimeineSwiperPagination = styled.div`
 
 	.swiper-pagination-bullet-active {
 		opacity: 1;
+	}
+`;
+
+export const StyledSwiperSlide = styled(SwiperSlide)`
+	opacity: 1;
+	transition: opacity 400ms ease;
+
+	&.swiper-slide-next {
+		opacity: 0.4;
 	}
 `;

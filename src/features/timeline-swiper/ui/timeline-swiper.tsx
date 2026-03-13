@@ -4,11 +4,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { type FC, useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 import { useAnimatedSwiperContent } from "../model/useAnimatedSwiperContent";
 import {
 	StyledFlexContainer,
 	StyledFlexNavigation,
+	StyledSwiperSlide,
 	SwiperAnimatedContainer,
 } from "./timeline-swiper.styles";
 
@@ -16,10 +17,12 @@ const SWIPER_BREACKPOINTS = {
 	320: {
 		slidesPerView: 1,
 		spaceBetween: 25,
+		slidesOffsetAfter: 110,
 	},
 	768: {
 		slidesPerView: 2,
 		spaceBetween: 40,
+		slidesOffsetAfter: 0,
 	},
 	1024: {
 		slidesPerView: 3,
@@ -73,12 +76,15 @@ export const TimelineSwiper: FC<{
 						nextEl: ".swiper-next",
 					}}
 					breakpoints={SWIPER_BREACKPOINTS}
+					centeredSlides={false}
+					centerInsufficientSlides={false}
+					watchOverflow
 				>
 					{renderedEvents?.map((it) => {
 						return (
-							<SwiperSlide key={it.id}>
+							<StyledSwiperSlide key={it.id}>
 								<TimelineEventCard event={it} />
-							</SwiperSlide>
+							</StyledSwiperSlide>
 						);
 					})}
 				</Swiper>
