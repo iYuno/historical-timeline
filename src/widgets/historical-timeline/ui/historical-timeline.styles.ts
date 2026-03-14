@@ -8,6 +8,7 @@ export const StyledMainContainer = styled(Flex)`
 
 	.timeline-navigation {
 		z-index: ${ZIndexKind.backdrop};
+		width: max-content;
 	}
 
 	@media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
@@ -16,14 +17,26 @@ export const StyledMainContainer = styled(Flex)`
 		}
 	}
 
+	@media (max-width: ${({ theme }) => theme.breakpoints.xl}) {
+		& > div:has(.swiper) {
+			&::before {
+				content: "";
+				width: 100%;
+				height: 1px;
+				background: ${({ theme }) => theme.colors.lineSecondary};
+				margin-bottom: 1.25rem;
+			}
+		}
+	}
+
 	@media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
-		width: 280px;
+		width: calc(100% - 40px);
 		margin: auto;
 		padding-top: 60px;
 		padding-bottom: 1.25rem;
 
 		.swiper {
-			width: 300px;
+			width: calc(100% + 20px);
 			margin: 0;
 		}
 
@@ -31,7 +44,7 @@ export const StyledMainContainer = styled(Flex)`
 			margin-top: 56px;
 			margin-bottom: 56px;
 			gap: 1.25rem;
-			justify-content: flex-start;
+			justify-content: center;
 		}
 
 		.timeline-navigation {
@@ -56,7 +69,6 @@ export const StyledMainContainer = styled(Flex)`
 		}
 
 		.years {
-			justify-content: center;
 			gap: 2.5rem;
 		}
 	}
@@ -73,6 +85,15 @@ export const StyledMainContainer = styled(Flex)`
 	}
 
 	@media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+		& .title::before {
+			content: "";
+			background: ${({ theme }) => theme.gradient.primary};
+			width: 5px;
+			height: 6rem;
+			position: absolute;
+			left: 0;
+		}
+
 		> div:not(.years) {
 			padding-left: calc(80 / 1920 * 100vw);
 		}
@@ -99,13 +120,10 @@ export const StyledMainContainer = styled(Flex)`
 			order: 2;
 		}
 	}
-`;
 
-export const Divider = styled.span`
-	display: block;
-	background: ${({ theme }) => theme.gradient.primary};
-	width: 5px;
-	height: 7.5rem;
-	position: absolute;
-	left: 0;
+	@media (min-width: ${({ theme }) => theme.breakpoints["2xl"]}) {
+		& .title::before {
+			height: 7.5rem;
+		}
+	}
 `;

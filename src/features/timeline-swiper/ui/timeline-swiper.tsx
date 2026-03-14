@@ -17,7 +17,11 @@ const SWIPER_BREAKPOINTS = {
 	320: {
 		slidesPerView: 1,
 		spaceBetween: 25,
-		slidesOffsetAfter: 110,
+		slidesOffsetAfter: 134,
+	},
+	400: {
+		slidesOffsetAfter: 164,
+		spaceBetween: 25,
 	},
 	768: {
 		slidesPerView: 2,
@@ -54,7 +58,7 @@ export const TimelineSwiper: FC<{
 	});
 
 	return (
-		<StyledFlexContainer position="relative">
+		<StyledFlexContainer position="relative" direction="column">
 			<StyledFlexNavigation position="absolute">
 				<Button
 					size="icon-sm"

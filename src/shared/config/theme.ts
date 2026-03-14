@@ -11,6 +11,7 @@ export const palette = {
 	},
 	slate: {
 		300: "oklch(0.9705 0.0054 274.97)",
+		400: "oklch(0.8473 0.0179 264.47)",
 		600: "oklch(0.4525 0.0643 261.77)",
 		700: "oklch(0.3635 0.0489 262.38)",
 		"700/10": "oklch(0.3635 0.0489 262.38 / 0.1)",
@@ -34,6 +35,7 @@ export const theme = {
 		borderSecondary: palette.slate["700/50"],
 
 		line: palette.slate["700/10"],
+		lineSecondary: palette.slate["700/10"],
 	},
 
 	gradient: {

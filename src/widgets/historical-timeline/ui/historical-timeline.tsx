@@ -7,7 +7,7 @@ import { Line } from "@shared/ui/line";
 import { T } from "@shared/ui/typography";
 import { type FC, useEffect, useId } from "react";
 import { useHistoricalTimelineWidget } from "../model/useHistoricalTimelineWidget";
-import { Divider, StyledMainContainer } from "./historical-timeline.styles";
+import { StyledMainContainer } from "./historical-timeline.styles";
 
 export const HistoricalTimeline: FC = () => {
 	const { data: periods, isLoading } = useTimelinePeriods();
@@ -56,8 +56,7 @@ export const HistoricalTimeline: FC = () => {
 			<Line direction="vertical" attach="right" />
 			<Line direction="vertical" attach="center" />
 
-			<Flex align="center" position="relative">
-				<Divider className="divider" />
+			<Flex align="center" position="relative" className="title">
 				<T as="h2" variant="h2">
 					Исторические <br /> даты
 				</T>
