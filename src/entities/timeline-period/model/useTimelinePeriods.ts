@@ -1,5 +1,6 @@
-import { getTimelinePeriods, type TimelinePeriod } from "@entities/timeline-period";
 import { useQuery } from "@tanstack/react-query";
+import { getTimelinePeriods } from "../api/get-timeline-periods";
+import type { TimelinePeriod } from "./types";
 
 type UseTimelinePeriodsResult = {
 	data: TimelinePeriod[];

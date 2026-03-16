@@ -5,9 +5,6 @@ export function useHistoricalTimelineWidget(periods: TimelinePeriod[]) {
 	const [activeIndex, setActiveIndex] = useState(0);
 
 	const total = periods.length;
-	const [paginationCurrentLabel, setPaginationCurrentLabel] = useState("00");
-
-	const paginationLabelAll = `${String(total).padStart(2, "0")}`;
 	const activePeriod = periods[activeIndex];
 
 	const handlePrevTimeline = useCallback(() => {
@@ -27,9 +24,6 @@ export function useHistoricalTimelineWidget(periods: TimelinePeriod[]) {
 		setActiveIndex,
 		handleNextTimeline,
 		handlePrevTimeline,
-		paginationCurrentLabel,
-		setPaginationCurrentLabel,
-		paginationLabelAll,
 		activePeriod,
 	};
 }

@@ -1,12 +1,12 @@
 import { T } from "@shared/ui/typography";
 import { type FC, useEffect, useRef, useState } from "react";
 import { getPointPositionPercent, getShortestStepDelta } from "../../model/math";
-import type { CircleProps } from "../../model/types";
 import { PointLabel, PointSlot, StyledCircle, StyledPoint } from "./timeline-circle.styles";
+import type { TimelineCircleProps } from "./timeline-circle.types";
 
 const TARGET_ANGLE = 0;
 
-export const TimelineCircle: FC<CircleProps> = ({ points, activeIndex, onChange }) => {
+export const TimelineCircle: FC<TimelineCircleProps> = ({ points, activeIndex, onChange }) => {
 	const [rotation, setRotation] = useState(TARGET_ANGLE);
 	const prevIndexRef = useRef(activeIndex);
 

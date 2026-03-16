@@ -1,30 +1,21 @@
-import { TimelineCircle, TimelineNavigation } from "@entities/timeline-period";
-import { useTimelinePeriods } from "@features/timeline-period";
-import { TimelineSwiper, TimelineSwiperPagination } from "@features/timeline-swiper";
+import { TimelineCircle, useTimelinePeriods } from "@entities/timeline-period";
+import { TimelineNavigation } from "@features/timeline-navigation";
+import { TimelineSwiper } from "@features/timeline-swiper";
 import { useAnimatedNumber } from "@shared/lib/useAnimatedNumber";
 import { Flex } from "@shared/ui/flex";
 import { Line } from "@shared/ui/line";
 import { T } from "@shared/ui/typography";
-import { type FC, useEffect, useId } from "react";
+import { type FC, useEffect } from "react";
 import { useHistoricalTimelineWidget } from "../model/useHistoricalTimelineWidget";
 import { StyledMainContainer } from "./historical-timeline.styles";
 
 export const HistoricalTimeline: FC = () => {
 	const { data: periods, isLoading } = useTimelinePeriods();
-	const {
-		activeIndex,
-		setActiveIndex,
-		paginationCurrentLabel,
-		setPaginationCurrentLabel,
-		paginationLabelAll,
-		handlePrevTimeline,
-		handleNextTimeline,
-		activePeriod,
-	} = useHistoricalTimelineWidget(periods);
+	const { activeIndex, setActiveIndex, handlePrevTimeline, handleNextTimeline, activePeriod } =
+		useHistoricalTimelineWidget(periods);
 
 	const animatedStartYear = useAnimatedNumber(activePeriod?.startYear ?? 0);
 	const animatedEndYear = useAnimatedNumber(activePeriod?.endYear ?? 0);
-	const paginationId = useId().replace(/:/g, "");
 
 	useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
@@ -77,20 +68,15 @@ export const HistoricalTimeline: FC = () => {
 
 			<TimelineNavigation
 				isLoading={isLoading}
-				paginationCurrentLabel={paginationCurrentLabel}
-				paginationLabelAll={paginationLabelAll}
-				setPaginationCurrentLabel={setPaginationCurrentLabel}
-				handlePrevTimeline={handlePrevTimeline}
-				handleNextTimeline={handleNextTimeline}
 				activeIndex={activeIndex}
+				total={periods.length}
+				onPrev={handlePrevTimeline}
+				onNext={handleNextTimeline}
 			/>
 
-			<TimelineSwiper
-				paginationId={paginationId}
-				events={activePeriod?.events ?? []}
-				isLoading={isLoading}
-			/>
-			<TimelineSwiperPagination id={`swiper-pagination-${paginationId}`} />
+			<TimelineSwiper events={activePeriod?.events ?? []} isLoading={isLoading}>
+				<TimelineSwiper.Pagination />
+			</TimelineSwiper>
 		</StyledMainContainer>
 	);
 };

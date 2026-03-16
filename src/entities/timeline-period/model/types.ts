@@ -8,17 +8,6 @@ export interface TimelinePeriod {
 	events: TimelineEvent[];
 }
 
-export interface CirclePoint {
-	id: string;
-	label: string;
-}
-
-export interface CircleProps {
-	points: CirclePoint[];
-	activeIndex: number;
-	onChange: (nextIndex: number) => void;
-}
-
 export type GetTimelinePeriodsResponse = {
 	data: TimelinePeriod[];
 };

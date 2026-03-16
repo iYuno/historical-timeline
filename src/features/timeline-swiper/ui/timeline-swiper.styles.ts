@@ -18,6 +18,10 @@ export const StyledFlexNavigation = styled(Flex)`
 
 	display: flex;
 	justify-content: space-between;
+
+	button {
+		z-index: ${ZIndexKind.drawer};
+	}
 `;
 
 export const SwiperAnimatedContainer = styled.div`
@@ -61,7 +65,7 @@ export const SwiperAnimatedContainer = styled.div`
 	}
 `;
 
-export const TimelineSwiperPagination = styled.div`
+export const StyledTimelineSwiperPagination = styled.div`
 	z-index: ${ZIndexKind.header};
 	display: flex;
 	justify-content: center;
