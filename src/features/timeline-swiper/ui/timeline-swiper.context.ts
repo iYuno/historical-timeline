@@ -7,7 +7,7 @@ export const useTimelineSwiperContext = () => {
 	const context = useContext(TimelineSwiperContext);
 
 	if (!context) {
-		throw new Error("TimelineSwiper.Pagination должен быть использован внутри TimelineSwiper.");
+		throw new Error("TimelineSwiper compound components must be used within TimelineSwiper.");
 	}
 
 	return context;

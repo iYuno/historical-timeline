@@ -74,8 +74,13 @@ export const HistoricalTimeline: FC = () => {
 				onNext={handleNextTimeline}
 			/>
 
-			<TimelineSwiper events={activePeriod?.events ?? []} isLoading={isLoading}>
-				<TimelineSwiper.Pagination />
+			<TimelineSwiper
+				events={activePeriod?.events ?? []}
+				isLoading={isLoading}
+				outsideChildren={<TimelineSwiper.Pagination />}
+			>
+				<TimelineSwiper.Navigation />
+				<TimelineSwiper.AnimatedContainer />
 			</TimelineSwiper>
 		</StyledMainContainer>
 	);
